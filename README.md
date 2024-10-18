@@ -1,10 +1,10 @@
 # Dotfiles
 
 Managing dotfiles via git worktree shenanigans. Credits to
-https://www.atlassian.com/git/tutorials/dotfiles.
+<https://www.atlassian.com/git/tutorials/dotfiles>.
 
 ```bash
-alias cfg='git --git-dir="$HOME/dotfiles/" --work-tree="$HOME"'
+alias cfg='git --git-dir="$HOME/cfg.git/" --work-tree="$HOME"'
 ```
 
 ## Using the dotfiles
@@ -23,5 +23,3 @@ cfg add .myconfig
 cfg commit -s
 cfg push -u origin main
 ```
-
-

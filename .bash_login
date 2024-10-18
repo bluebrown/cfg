@@ -6,7 +6,7 @@ fi
 
 export EDITOR=nvim
 
-alias cfg='git --git-dir="$HOME/dotfiles/" --work-tree="$HOME"'
+alias cfg='git --git-dir="$HOME/cfg.git/" --work-tree="$HOME"'
 
 alias v="nvim"
 alias vi="nvim"
