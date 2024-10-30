@@ -15,5 +15,6 @@ return {
   ["plenary.nvim"] = "2d9b06177a975543726ce5c73fca176cedbffe9d",
   ["telescope-fzf-native.nvim"] = "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b",
   ["telescope-ui-select.nvim"] = "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
-  ["telescope.nvim"] = "df534c3042572fb958586facd02841e10186707c"
+  ["telescope.nvim"] = "df534c3042572fb958586facd02841e10186707c",
+  ["todo-comments.nvim"] = "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0"
 }
