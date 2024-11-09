@@ -5,6 +5,7 @@
     git clone --bare git@github.com:bluebrown/cfg.git 
     alias cfg='git --git-dir="$HOME/cfg.git/" --work-tree="$HOME"'
     cfg checkout
+    dash .config/deps.sh
 
 ## Creating your own
 

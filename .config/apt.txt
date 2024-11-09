@@ -1,0 +1,13 @@
+git
+curl
+build-essential
+man-db
+manpages
+fd-find
+bat
+lsd
+fzf
+ripgrep
+gnuplot
+tmux
+cargo
