@@ -1,47 +1,47 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-sar_report="${1:-prof.bin}"
-primary_device="${2:-eth0}"
-
-tmpdir="$(mktemp -d)"
-cp "$sar_report" "$tmpdir"
-cd "$tmpdir"
+file="$(readlink -f "${1:-prof.bin}")"
+iface="${2:-eth0}"
 
 export S_TIME_FORMAT=ISO
-sar -f "$sar_report" -r | sed '1,2d;$d' >mem.dat
-sar -f "$sar_report" -u | sed '1,2d;$d' >cpu.dat
-sar -f "$sar_report" -n DEV --iface="$primary_device" | sed '1,2d;$d' >dev.dat
-sar -f "$sar_report" -n SOCK | sed '1,2d;$d' >sock.dat
+sar -f "$file" -r | sed '1,2d;$d' >/tmp/mem.dat
+sar -f "$file" -u | sed '1,2d;$d' >/tmp/cpu.dat
+sar -f "$file" -n DEV --iface="$iface" | sed '1,2d;$d' >/tmp/dev.dat
+sar -f "$file" -n SOCK | sed '1,2d;$d' >/tmp/sock.dat
 
 cat <<EOF | gnuplot >"stats.png"
-set terminal png size 1600,900
-set key autotitle columnhead
+set terminal pngcairo dashed size 1600,900 background rgb "#0d1117"
+set label font "Arial,12" textcolor rgb "#9198a1"
+set xtics textcolor rgb "#9198a1"
+set ytics textcolor rgb "#9198a1"
+set style line 10 linecolor rgb "#6a6e7487" dashtype 3
+set style line 1 lt 1 lc rgb "#4493f8"
+set style line 2 lt 1 lc rgb "#3fb950"
+
+set grid linestyle 10
+set style data lines
+
+set key autotitle columnhead outside textcolor rgb "#9198a1"
+
 set xdata time
 set timefmt "%H:%M:%S"
 set format x "%H:%M:%S"
 set yrange [0:*]
-
-set grid
-set style data lines
 set autoscale
 
-set multiplot layout 4,1 title "System Statistics"
+set multiplot layout 4,1 title "System Statistics" textcolor rgb "#9198a1" font "Arial,16"
 
-set title "CPU"
-plot "cpu.dat" using 1:(100 - column(8)) smooth freq title "%busy"
+set title "CPU" textcolor rgb "#9198a1"
+plot "/tmp/cpu.dat" using 1:(100 - column(8)) ls 1 smooth freq title "%busy"
 
-set title "Memory"
-plot "mem.dat" using 1:5 smooth freq
+set title "Memory" textcolor rgb "#9198a1"
+plot "/tmp/mem.dat" using 1:5 ls 1 smooth freq
 
-set title "Net I/O"
-plot "dev.dat" using 1:5 smooth freq, \
-     "dev.dat" using 1:6 smooth freq
+set title "Net I/O" textcolor rgb "#9198a1"
+plot "/tmp/dev.dat" using 1:5 ls 1 smooth freq, \
+     "/tmp/dev.dat" using 1:6 ls 2 smooth freq
 
-set title "Sockets"
-plot "sock.dat" using 1:2 smooth freq
+set title "Sockets" textcolor rgb "#9198a1"
+plot "/tmp/sock.dat" using 1:2 ls 1 smooth freq
 EOF
-
-cd -
-mv "$tmpdir/stats.png" .
-rm -rf "${tmpdir:?}"
