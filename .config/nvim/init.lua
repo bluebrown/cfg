@@ -141,8 +141,7 @@ end)
 -- diagnostics
 later(function()
 	local winconf = { border = "rounded", max_width = 80 }
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, winconf)
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, winconf)
+
 	vim.diagnostic.config({
 		virtual_text = true,
 		signs = true,
@@ -159,9 +158,13 @@ later(function()
 			},
 		},
 	})
-	local ok, lcfg = pcall(require, "lspconfig.ui.windows")
-	if ok then
-		lcfg.default_opts({ border = winconf.border })
+
+	local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+	function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+		opts = opts or {}
+		opts.border = opts.border or winconf.border
+		opts.max_width = opts.max_width or winconf.max_width
+		return orig_util_open_floating_preview(contents, syntax, opts, ...)
 	end
 end)
 
