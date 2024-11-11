@@ -1,6 +1,7 @@
 git
 curl
 build-essential
+groff
 man-db
 manpages
 fd-find
@@ -10,4 +11,6 @@ fzf
 ripgrep
 gnuplot
 tmux
-cargo
+unzip
+wget
+

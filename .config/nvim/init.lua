@@ -214,6 +214,9 @@ end)
 now(function()
 	add("williamboman/mason.nvim")
 	require("mason").setup()
+	vim.api.nvim_create_user_command("PluginInstall", function()
+		vim.cmd([[MasonInstall shfmt shellcheck markdownlint goimports]])
+	end, {})
 end)
 
 -- langauge server
@@ -253,7 +256,6 @@ later(function()
 		group = lint_augroup,
 		callback = function()
 			require("lint").try_lint()
-			require("lint").try_lint("codespell")
 		end,
 	})
 end)
@@ -269,7 +271,7 @@ later(function()
 			yaml = { "yamlfmt" },
 			sh = { "shfmt" },
 			c = { "clang-format" },
-			go = { "gofmt", "goimports" },
+			go = { "goimports" },
 			python = { "isort", "black" },
 		},
 		notify_on_error = false,
