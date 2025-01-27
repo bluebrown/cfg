@@ -7,7 +7,7 @@ tar -xzf starship-x86_64-unknown-linux-gnu.tar.gz -C "$HOME/.local/" starship
 
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz.sha256sum
-shas256um -c nvim-linux64.tar.gz.sha256sum
+sha256sum -c nvim-linux64.tar.gz.sha256sum
 tar --strip-components 1 -C "$HOME/.local/" -xzf nvim-linux64.tar.gz
 
 npm config set prefix=~/.local
