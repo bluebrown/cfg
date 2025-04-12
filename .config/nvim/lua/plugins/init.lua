@@ -1,7 +1,7 @@
 local path_package = vim.fn.stdpath("data") .. "/site/"
 local mini_path = path_package .. "pack/deps/start/mini.nvim"
 if not vim.loop.fs_stat(mini_path) then
-	vim.cmd('echo "Installing `mini.nvim`" | redraw')
+	vim.cmd("echo \"Installing `mini.nvim`\" | redraw")
 	local clone_cmd = {
 		"git",
 		"clone",
@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(mini_path) then
 	}
 	vim.fn.system(clone_cmd)
 	vim.cmd("packadd mini.nvim | helptags ALL")
-	vim.cmd('echo "Installed `mini.nvim`" | redraw')
+	vim.cmd("echo \"Installed `mini.nvim`\" | redraw")
 end
 require("mini.deps").setup({ path = { package = path_package } })
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
@@ -81,16 +81,23 @@ later(function()
 		highlight = { enable = true, additional_vim_regex_highlighting = false },
 		incremental_selection = { enable = false },
 		indent = { enable = false },
-		ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+		ensure_installed = require("deps").syntax,
 	})
 end)
 
 now(function()
 	add("williamboman/mason.nvim")
 	require("mason").setup()
-	if not vim.loop.fs_stat(vim.fn.stdpath("data") .. "/mason/") then
-		vim.cmd([[MasonUpdate]])
-		vim.cmd([[MasonInstall shfmt shellcheck markdownlint cspell]])
+	local want = require("deps").tools
+	local need = {}
+	for _, t in pairs(want) do
+		local p = vim.fn.stdpath("data") .. "/mason/packages/" .. t
+		if not vim.loop.fs_stat(p) then
+			table.insert(need, t)
+		end
+	end
+	if #need > 0 then
+		vim.cmd({ cmd = "MasonInstall", args = need })
 	end
 end)
 

@@ -1,0 +1,26 @@
+return {
+	syntax = {
+		"c",
+		"lua",
+		"vim",
+		"vimdoc",
+		"query",
+		"markdown",
+		"markdown_inline",
+	},
+	tools = {
+		"hclfmt",
+		"black",
+		"clang-format",
+		"clangd",
+		"cspell",
+		"goimports",
+		"isort",
+		"markdownlint",
+		"shellcheck",
+		"shfmt",
+		"stylua",
+		"taplo",
+		"yamlfmt",
+	},
+}
