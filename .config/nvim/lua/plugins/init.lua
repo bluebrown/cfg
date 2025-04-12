@@ -81,18 +81,20 @@ later(function()
 		highlight = { enable = true, additional_vim_regex_highlighting = false },
 		incremental_selection = { enable = false },
 		indent = { enable = false },
+		ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 	})
 end)
 
 now(function()
 	add("williamboman/mason.nvim")
 	require("mason").setup()
-	vim.api.nvim_create_user_command("PluginInstall", function()
-		vim.cmd([[MasonInstall shfmt shellcheck markdownlint goimports]])
-	end, {})
+	if not vim.loop.fs_stat(vim.fn.stdpath("data") .. "/mason/") then
+		vim.cmd([[MasonUpdate]])
+		vim.cmd([[MasonInstall shfmt shellcheck markdownlint cspell]])
+	end
 end)
 
--- langauge server
+-- language server
 -- needs to load early so lsp attach runs on first bufEnter
 now(function()
 	add("neovim/nvim-lspconfig")
@@ -100,6 +102,8 @@ now(function()
 	--
 	-- NOTE: servers have to be installed manually!
 	lc.gopls.setup({})
+	lc.rust_analyzer.setup({})
+	lc.pyright.setup({})
 
 	-- - "K" is mapped in Normal mod to |vim.lsp.buf.hover()|
 	-- - "grn" is mapped in Normal mode to |vim.lsp.buf.rename()|
@@ -129,6 +133,7 @@ later(function()
 		group = lint_augroup,
 		callback = function()
 			require("lint").try_lint()
+			require("lint").try_lint("cspell")
 		end,
 	})
 end)
@@ -147,6 +152,8 @@ later(function()
 			go = { "goimports" },
 			python = { "isort", "black" },
 			hcl = { "hcl" },
+			toml = { "taplo" },
+			rust = { "rustfmt" },
 		},
 		notify_on_error = false,
 		format_on_save = function(buf)
