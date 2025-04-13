@@ -13,4 +13,8 @@ gnuplot
 tmux
 unzip
 wget
+direnv
+starship
+jq
+python3-neovim
 

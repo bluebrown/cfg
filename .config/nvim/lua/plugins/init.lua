@@ -111,6 +111,7 @@ now(function()
 	lc.gopls.setup({})
 	lc.rust_analyzer.setup({})
 	lc.pyright.setup({})
+	lc.bashls.setup({})
 
 	-- - "K" is mapped in Normal mod to |vim.lsp.buf.hover()|
 	-- - "grn" is mapped in Normal mode to |vim.lsp.buf.rename()|
