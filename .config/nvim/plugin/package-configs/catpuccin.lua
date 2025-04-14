@@ -1,5 +1,8 @@
 local ok, plugin = pcall(require, "catppuccin")
-if not ok then return end
+if not ok then
+  vim.notify("catppuccin not found", vim.log.levels.WARN)
+  return
+end
 
 plugin.setup({
   transparent_background = true,

@@ -1,5 +1,8 @@
 local ok, plugin = pcall(require, "oil")
-if not ok then return end
+if not ok then
+  vim.notify("oil not found", vim.log.levels.WARN)
+  return
+end
 
 plugin.setup({
   default_file_explorer = true,

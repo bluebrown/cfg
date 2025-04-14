@@ -1,8 +1,14 @@
 local ok, install = pcall(require, "nvim-treesitter.install")
-if not ok then return end
+if not ok then
+  vim.notify("nvim-treesitter.install not found", vim.log.levels.WARN)
+  return
+end
 
 local ok, configs = pcall(require, "nvim-treesitter.configs")
-if not ok then return end
+if not ok then
+  vim.notify("nvim-treesitter.configs not found", vim.log.levels.WARN)
+  return
+end
 
 install.prefer_git = true
 

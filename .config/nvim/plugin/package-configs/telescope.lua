@@ -1,5 +1,8 @@
 local ok, plugin = pcall(require, "telescope")
-if not ok then return end
+if not ok then
+  vim.notify("telescope not found", vim.log.levels.WARN)
+  return
+end
 
 plugin.setup({
   defaults = {

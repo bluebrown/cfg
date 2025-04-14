@@ -1,5 +1,8 @@
 local ok, plugin = pcall(require, "mason")
-if not ok then return end
+if not ok then
+  vim.notify("mason not found", vim.log.levels.WARN)
+  return
+end
 
 plugin.setup()
 

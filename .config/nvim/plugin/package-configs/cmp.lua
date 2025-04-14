@@ -1,8 +1,14 @@
 local ok, cmp = pcall(require, "cmp")
-if not ok then return end
+if not ok then
+  vim.notify("cmp not found", vim.log.levels.WARN)
+  return
+end
 
 local ok, luasnip = pcall(require, "luasnip")
-if not ok then return end
+if not ok then
+  vim.notify("luasnip not found", vim.log.levels.WARN)
+  return
+end
 
 luasnip.config.setup({})
 
