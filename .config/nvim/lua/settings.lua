@@ -1,0 +1,35 @@
+return {
+  syntax = {
+    "bash",
+    "json",
+    "yaml",
+    "toml",
+    "python",
+    "go",
+    "rust",
+  },
+  lsp = {
+    "bashls",
+    "clangd",
+    "gopls",
+    "pyright",
+    "rust_analyzer",
+  },
+  lint = {
+    markdown = { "markdownlint" },
+    sh = { "shellcheck" },
+    terraform = { "tflint", "tfsec" },
+  },
+  format = {
+    go = { "goimports" },
+    hcl = { "hcl" },
+    lua = { "stylua" },
+    json = { "jq" },
+    sh = { "shfmt" },
+    toml = { "taplo" },
+    python = { "isort", "black" },
+    rust = { "rustfmt" },
+    yaml = { "yamlfmt" },
+    markdown = { "markdownlint" },
+  },
+}
