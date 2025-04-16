@@ -1,4 +1,5 @@
 return {
+  theme = "tokyonight",
   syntax = {
     "bash",
     "json",

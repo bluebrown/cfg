@@ -1,0 +1,23 @@
+{
+  "name": "tokyonight",
+  "foreground": "#C8D3F5",
+  "background": "#222436",
+  "selectionBackground": "#2F334D",
+  "cursorColor": "#636DA6",
+  "black": "#545C7E",
+  "brightBlack": "#737AA2",
+  "white": "#E5E5E5",
+  "brightWhite": "#E5E5E5",
+  "blue": "#3E68D7",
+  "brightBlue": "#82AAFF",
+  "green": "#41A6B5",
+  "brightGreen": "#4FD6BE",
+  "red": "#C53B53",
+  "brightRed": "#FF757F",
+  "yellow": "#D1A362",
+  "brightYellow": "#FFC777",
+  "cyan": "#0DB9D7",
+  "brightCyan": "#86E1FC",
+  "purple": "#FF007C",
+  "brightPurple": "#FCA7EA"
+}

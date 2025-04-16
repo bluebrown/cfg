@@ -1,6 +1,6 @@
 MiniDeps.now(function()
   -- theme
-  MiniDeps.add("catppuccin/nvim")
+  MiniDeps.add("folke/tokyonight.nvim")
 
   -- lsp configs
   MiniDeps.add("neovim/nvim-lspconfig")
@@ -51,4 +51,7 @@ MiniDeps.now(function()
 
   -- tools installer
   MiniDeps.add("williamboman/mason.nvim")
+
+  -- dynamic indent settings
+  MiniDeps.add("tpope/vim-sleuth")
 end)
