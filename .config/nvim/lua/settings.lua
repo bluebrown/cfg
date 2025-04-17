@@ -27,7 +27,7 @@ return {
     lua = { "stylua" },
     json = { "jq" },
     sh = { "shfmt" },
-    toml = { "taplo" },
+    -- toml = { "taplo" },
     python = { "isort", "black" },
     rust = { "rustfmt" },
     yaml = { "yamlfmt" },

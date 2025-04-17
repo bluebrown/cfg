@@ -1,3 +1,5 @@
+# vi:ft=yaml:
+---
 formatter:
   type: basic
   include_document_start: true

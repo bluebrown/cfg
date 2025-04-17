@@ -5,13 +5,6 @@ vim.opt.undofile = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- vim.opt.smartindent = false
--- vim.opt.breakindent = true
--- vim.opt.tabstop = 8
--- vim.opt.softtabstop = 4
--- vim.opt.shiftwidth = 4
--- vim.opt.expandtab = false
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 16

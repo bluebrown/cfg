@@ -8,9 +8,10 @@ plugin.setup({
   default_file_explorer = true,
   delete_to_trash = true,
   skip_confirm_for_simple_edits = true,
+  constrain_cursor = "name",
   view_options = {
     show_hidden = true,
-    natural_order = true,
+    natural_order = "fast",
     is_always_hidden = function(name, _)
       if name == ".." then return true end
       if name == ".git" then return true end
@@ -18,6 +19,7 @@ plugin.setup({
   },
   win_options = {
     wrap = true,
+    signcolumn = vim.wo.signcolumn,
   },
 })
 
