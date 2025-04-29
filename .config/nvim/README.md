@@ -33,11 +33,9 @@ opens the signature help below the signature.
 ## Diagnostics
 
 The next and previous diagnostic can be cycled with `[d` and `[D`,
-respectively.
+respectively. The following custom keymaps have been set.
 
-The following keymap is not set by default. It has been set to view all
-diagnostics, of the current workspace.
-
+    vim.keymap.set("n", "grf", vim.diagnostic.open_float)
     vim.keymap.set("n", "grq", vim.diagnostic.setqflist)
 
 ## Code Actions

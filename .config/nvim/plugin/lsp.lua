@@ -1,7 +1,7 @@
 local winconf = { border = "rounded", max_width = 80 }
 
 vim.diagnostic.config({
-  virtual_text = { current_line = true },
+  virtual_lines = { current_line = true },
   signs = true,
   update_in_insert = false,
   underline = true,
@@ -31,3 +31,7 @@ vim.keymap.set("n", "grq", vim.diagnostic.setqflist)
 
 vim.keymap.set("n", "grd", vim.lsp.buf.definition)
 vim.keymap.set("n", "grD", vim.lsp.buf.declaration)
+
+for _, ls in pairs(require("settings").lsp) do
+  vim.lsp.enable(ls)
+end

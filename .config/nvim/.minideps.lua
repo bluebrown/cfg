@@ -8,7 +8,7 @@ return {
   ["mini.nvim"] = "a8b1d74f45dadf3554c0eed784c6ccd8ade67883",
   ["nvim-cmp"] = "b5311ab3ed9c846b585c0c15b7559be131ec4be9",
   ["nvim-lint"] = "3615c26c4922ae5f7366f0c1943a0e7cece04325",
-  ["nvim-lspconfig"] = "cb5680882ed1f18e67429516e45b810de3d148b8",
+  ["nvim-lspconfig"] = "49c1268b99dab89671010673ed57980188cd00a0",
   ["nvim-treesitter"] = "684eeac91ed8e297685a97ef70031d19ac1de25a",
   ["oil.nvim"] = "302bbaceeafc690e6419e0c8296e804d60cb9446",
   ["plenary.nvim"] = "857c5ac632080dba10aae49dba902ce3abf91b35",
@@ -16,5 +16,6 @@ return {
   ["telescope-ui-select.nvim"] = "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
   ["telescope.nvim"] = "a4ed82509cecc56df1c7138920a1aeaf246c0ac5",
   ["todo-comments.nvim"] = "304a8d204ee787d2544d8bc23cd38d2f929e7cc5",
-  ["tokyonight.nvim"] = "057ef5d260c1931f1dffd0f052c685dcd14100a3"
+  ["tokyonight.nvim"] = "057ef5d260c1931f1dffd0f052c685dcd14100a3",
+  ["vim-sleuth"] = "be69bff86754b1aa5adcbb527d7fcd1635a84080"
 }

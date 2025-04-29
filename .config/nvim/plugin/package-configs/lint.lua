@@ -5,3 +5,7 @@ if not ok then
 end
 
 plugin.linters_by_ft = require("settings").lint
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function() require("lint").try_lint() end,
+})

@@ -28,12 +28,15 @@ MiniDeps.now(function()
 
   -- completion
   MiniDeps.add({
-    source = "hrsh7th/nvim-cmp",
+    source = "L3MON4D3/LuaSnip",
     depends = {
-      "L3MON4D3/LuaSnip",
+      "hrsh7th/nvim-cmp",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
+    },
+    hooks = {
+      post_install = function(args) os.execute("make -C " .. args.path .. " install_jsregexp") end,
     },
   })
 
