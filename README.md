@@ -8,13 +8,45 @@
 
 ## Creating your own
 
-    git init --bare ~/cfg.git
-    alias cfg='git --git-dir="$HOME/cfg.git/" --work-tree="$HOME"'
-    cfg remote add origin git@github.com:<your-user>/cfg.git
+    git init --bare ~/dotfiles.git
+    alias cfg='git --git-dir "$HOME/dotfiles.git" --work-tree "$HOME"'
+    cfg remote add origin git@github.com:<your-user>/dotfiles.git
     cfg add -f .myconfig
     cfg commit -s
     cfg push -u origin main
 
-## See Also
+## Cookbook
 
-- <https://www.atlassian.com/git/tutorials/dotfiles>.
+### Bash Completions
+
+Many command line tools offer bash completions. Below example shows how
+to create completions for kubectl and its alias k.
+
+Create the third party provided completions, and search for its
+function.
+
+```bash
+kubectl completion bash > kubectl
+complete -p | grep kubectl
+```
+
+Use the function fould by complete -p to create a new completion
+triggered by the alias. The original script is sourced first, to avoid
+ordering issues when loading the completions.
+
+
+```bash
+cat <<-EOF > k
+source /etc/bash_completion.d/kubectl
+complete -F __start_kubectl k
+EOF
+```
+
+In order to automatically load the completions, place them into etc, and
+restart the shell.
+
+```bash
+mv kubectl k /etc/bash_completion.d/
+```
+
+
