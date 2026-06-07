@@ -1,3 +1,10 @@
+vim.pack.add({
+  "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/nvim-telescope/telescope.nvim",
+  "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+  "https://github.com/nvim-telescope/telescope-ui-select.nvim",
+})
+
 local ok, plugin = pcall(require, "telescope")
 if not ok then
   vim.notify("telescope not found", vim.log.levels.WARN)

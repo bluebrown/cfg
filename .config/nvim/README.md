@@ -1,5 +1,8 @@
 # Cheat Sheet
 
+> [!NOTE]  
+> Installation of nvim requires so manual steps. Not fully automated!
+
 ## File Navigation
 
 In `normal mode`, the oil buffer can bed opened with `-`. Pressing `-`

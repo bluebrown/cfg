@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/stevearc/oil.nvim" })
+
 local ok, plugin = pcall(require, "oil")
 if not ok then
   vim.notify("oil not found", vim.log.levels.WARN)
