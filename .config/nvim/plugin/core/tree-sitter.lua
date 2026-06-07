@@ -12,7 +12,7 @@ vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
 
 local ok, plugin = pcall(require, "nvim-treesitter")
 if not ok then
-  vim.notify("lint not found", vim.log.levels.WARN)
+  vim.notify("nvim-treesitter not found", vim.log.levels.WARN)
   return
 end
 
